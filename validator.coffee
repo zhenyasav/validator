@@ -32,30 +32,21 @@ class @Validator
 	
 	@cardNumber: (s) ->
 		select: s
-		test: (v) -> Stripe?.card?.validateCardNumber? v.val()
+		test: (v) -> Packages['mrgalaxy:stripe']?.Stripe?.card?.validateCardNumber? v.val()
 	
 	@cardDate: (s) ->
 		select: s
 		test: (v) -> 
 			d = v.val().split '/'
-			Stripe?.card?.validateExpiry? d?[0], d?[1]
+			Packages['mrgalaxy:stripe']?.Stripe?.card?.validateExpiry? d?[0], d?[1]
 	
 	@cardCVC: (s) ->
 		select: s
-		test: (v) -> Stripe?.card?.validateCVC? v.val()
+		test: (v) -> Packages['mrgalaxy:stripe']?.Stripe?.card?.validateCVC? v.val()
 	
 	@checked: (s) ->
 		select: s
 		test: (v) -> v.prop 'checked'
-
-	@nag: (s) ->
-		select: s
-		test: (v) -> 
-			if not v.hasClass 'nag'
-				v.addClass 'nag'
-				v.prop 'checked'
-			else 
-				true
 
 	@optional: (validator) ->
 		select: validator.select
@@ -63,7 +54,7 @@ class @Validator
 
 	constructor: (root, o...) ->
 		###
-			o should be an array like [
+			o is an array like [
 				select: '#form input'
 				test: (jquery) -> true / false
 			,

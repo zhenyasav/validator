@@ -1,7 +1,7 @@
 Package.describe({
   name: 'zhenya:validator',
   summary: 'validate user input',
-  version: '0.0.1',
+  version: '0.0.1'
 });
 
 Package.onUse(function(api) {
@@ -13,6 +13,8 @@ Package.onUse(function(api) {
 		'less',
 		'templating'
 		], 'client');
+
+	api.use('mrgalaxy:stripe', 'client', {weak:true});
 
 	api.addFiles([
 		'validator.import.less', 
