@@ -1,0 +1,63 @@
+.validator(@errorColor, @warningColor, @successColor) {
+	.form {
+		.validation {
+			text-align: center;
+			margin: 0;
+			padding: 4px 8px;
+			color: @errorColor;
+			//text-transform: uppercase;
+			font-size: 80%;
+			.border-radius(0 0 10px 10px);
+			display: none;
+
+			&.round {
+				.border-radius(10px);
+			}
+		}
+
+		.optional, &.optional {
+			.validation {
+				color: @warningColor;
+			}
+		}
+
+		.verification {
+			text-align: center;
+			margin: 2px 0;
+			padding: 4px;
+			font-size: 90%;
+			.border-radius(4px);
+
+			&.verified {
+				color: @successColor;
+				background-color: fade(@successColor, 10%);
+			}
+
+			&.unverified {
+				color: @errorColor;
+				background-color: fade(@errorColor, 10%);
+			}
+		}
+
+		.invalid {
+			.validation {
+				display: block;
+			}
+		}
+
+		.error {
+			color: @errorColor;
+			padding: 10px;
+			margin: 0;
+			text-align: center;
+			display: none;
+		}
+
+		.has-error {
+			.error {
+				display: block;
+			}
+		}
+	}
+
+}
